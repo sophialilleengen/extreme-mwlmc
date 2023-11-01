@@ -1,6 +1,9 @@
 # gendisk created files
 models/cuillin/diagnostics/*
+models/cuillin/MW0/diagnostics/*
 
+# hide large IC files
+models/cuillin/MW0/*bods*
 
 
 

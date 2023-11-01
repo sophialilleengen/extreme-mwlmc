@@ -6,7 +6,7 @@ ASCALE      : 0.029              # Radial scale length for disk basis constructi
 HSCALE      : 0.004            # Vertical scale length for disk basis construction
 LMAXFID     : 72               # Number of spherical harmonic functions for large disc basis
 NMAXFID     : 32                # Number of radial functions for large disc basis
-cachefile   : .eof.cache.file   # The cache file for the cylindrical basis
+cachefile   : .MWeof   # The cache file for the cylindrical basis
 MMAX        : 6                 # Number of azimuthal functions for the disk
 NMAXD       : 20                # Number of disk radial functions to keep
 NODD        : 8                 # Number of vertically-asymmetric basis terms to keep
