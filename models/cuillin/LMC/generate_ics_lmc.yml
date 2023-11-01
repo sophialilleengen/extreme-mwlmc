@@ -1,0 +1,92 @@
+#
+# standard parameters
+#
+# disk basis parameters
+ASCALE      : 0.014              # Radial scale length for disk basis construction
+HSCALE      : 0.003            # Vertical scale length for disk basis construction
+LMAXFID     : 72               # Number of spherical harmonic functions for large disc basis
+NMAXFID     : 32                # Number of radial functions for large disc basis
+cachefile   : .eof.cache.file   # The cache file for the cylindrical basis
+MMAX        : 6                 # Number of azimuthal functions for the disk
+NMAXD       : 20                # Number of disk radial functions to keep
+NODD        : 8                 # Number of vertically-asymmetric basis terms to keep
+NOUT        : 16                # Deprecated?
+ignore      : true             # If true, will force remaking the disc basis
+
+# disk realization parameters
+disk_mass   : 0.005            # Disk mass
+ndisk       : 1000000           # Number of disk particles
+dbods       : disc.bods         # The output bodyfile for the stellar disc
+ToomreQ     : 1.8               # Toomre Q value for disc (constant across disc)
+scale_length: 0.014              # Scale length of the realised disc
+scale_height: 0.003            # Scale height of the realised disc
+
+# halo basis parameters
+halofile1   : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc30.txt   # Halo spherical model table
+LMAX        : 6                 # Number of azimuthal functions for the halo
+NMAXH       : 20                # Number of halo radial terms
+multi       : false              # If true, Turn on multimass halo generation
+halofile2   : SLGridSph.fake    # Number density profile for multimass halo generation (if multi: true)
+
+# halo realisation parameters
+nhalo       : 10000000          # Number of halo particles
+hbods       : halo.bods         # The output bodyfile for the halo
+evolved     : false             # If true, user may input an existing halo to build around
+
+#
+# expert parameters
+#
+# global choices
+zeropos     : true              # Zero position and velocity of particles
+zerovel     : true              # Zero position and velocity of particles
+SEED        : 11                # Random number seed for realization
+
+# output diagnostics
+DFLAG       : 31                # Diagnostic binary bit flag for DiskHalo
+VFLAG       : 31                # Diagnostic binary bit flag for EmpCyl
+report      : false             # Add report from initial
+
+# disc basis tuning parameters -- if you change these you will need to remake the basis
+RNUM        : 200               # Number of radial knots for EmpCylSL basis construction quadrature
+TNUM        : 80                # Number of cos(theta) knots for EmpCylSL basis construction quadrature
+PNUM        : 1                 # Number of azimthal knots for EmpCylSL basis construction quadrature
+RCYLMIN     : 0.001             # Minimum disk basis radius
+RCYLMAX     : 20.0              # Maximum disk basis radius
+dtype       : exponential       # Type of disk for analytic function
+CMAPR       : 1                 # Radial coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
+CMAPZ       : 1                 # Vertical coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
+RTRUNC      : 0.1               # Maximum disk radius for erf truncation of EOF conditioning density
+NUMX        : 256               # Number of radial points in disk basis
+NUMY        : 128               # Number of vertical points in disk basis
+ASHIFT      : 0.0               # Fraction of scale length for shift in conditioning function
+
+# disk velocity realization parameters
+deproject   : EXP               # The EmpCylSL deprojection from specified disk model (EXP or MN)
+ctype       : Log               # DiskHalo radial coordinate scaling type (one of: Linear, Log,Rat)
+gentype     : Asymmetric        # Disk velocity realization type
+expcond     : true              # Use analytic function for conditioning
+NDR         : 80                # Number of radial points for disk velocity grids
+NDZ         : 30                # Number of vertical points for disc velocity grids (epicyclic, asymmetric, dv2)
+NDP         : 1                 # Number of angular wedges for disc
+constheight : true              # Use constant disk scaleheight
+SHFAC       : 16                # Maximum table vertical position, in scale height units
+CHEBY       : false             # If true, use Chebyshev smoothing for disc velocities
+NCHEB       : 0                 # Order of Chebyshev smoothing (if on)
+
+# halo basis tuning parameters
+RMIN        : 0.00001           # Minimum halo radius
+RSPHSL      : 2.0               # Maximum halo expansion radius
+NUMR        : 2000              # Size of radial grid for Spherical SL
+SCSPH       : 0.05              # Scale for Spherical SL coordinate mapping
+LOGR        : true              # Use log spacing for halo coordinate mapping?
+DMFAC       : 1.0               # Disk mass scaling factor for spherical deprojection model
+DIVERGE     : 0                 # Divergent inner halo profile?
+DIVERGE_RFAC: 1.0               # Radius factor for treating divergence
+RFACTOR     : 1.0               # Disk radial scaling factor for spherical deprojection model
+SCMAP       : 1                 # Turn on Spherical SL coordinate mapping (1, 2, 0=off)
+
+# halo velocity realisation parameters
+NHR         : 100               # Number of radial points for halo velocity calculations
+NHT         : 100               # Number of cos(theta) points for halo velocity calculations
+NUMDF       : 500               # Number of points in distribution function for halo
+TCHEB       : 0                 # If >0, use Chebyshev smoothing for halo DF

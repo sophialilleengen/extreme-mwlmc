@@ -5,7 +5,7 @@ from scipy import special
 rsphysical    = 4.25 # kpc
 rhosphysical  = 8.56e6 # Msun/kpc^3
 alpha         = 0.16
-rtruncfactor  = 25    # how many scale radii should we apply a rolloff?
+rtruncfactor  = 30    # how many scale radii should we apply a rolloff?
 
 # convert to G=1 units
 astronomicalG = 0.0000043009125 # gravitational constant, (km/s)^2 * kpc / Msun
