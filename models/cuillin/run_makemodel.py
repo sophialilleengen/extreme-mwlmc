@@ -1,5 +1,13 @@
+"""
+build an Einasto profile
+see https://bdiemer.bitbucket.io/colossus/halo_profile_einasto.html
+also see https://www.aanda.org/articles/aa/full_html/2022/11/aa44567-22/aa44567-22.html
+
+"""
+
 import numpy as np
 from scipy import special
+
 
 # choose the Einasto parameters of interest (rounded)
 rsphysical    = 8.51 # kpc
