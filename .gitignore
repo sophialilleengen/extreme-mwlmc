@@ -1,3 +1,9 @@
+# gendisk created files
+models/cuillin/diagnostics/*
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
