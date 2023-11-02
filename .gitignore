@@ -1,10 +1,8 @@
 # gendisk created files
-models/cuillin/diagnostics/*
-models/cuillin/MW0/diagnostics/*
 
 # hide large IC files
-models/cuillin/MW0/*bods*
-
+models/cuillin/MW/MW0/*
+modles/cuillin/LMC/LMC0/*
 
 
 # Byte-compiled / optimized / DLL files

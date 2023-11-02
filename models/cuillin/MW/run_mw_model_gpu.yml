@@ -1,0 +1,84 @@
+Global:
+  dtime     : 0.002
+  ldlibdir  : /home/mpetersen/lib/user
+  outdir    : /cephfs/mpetersen/extreme-mwlmc/models/cuillin/MW0
+  nsteps    : 1000
+  runtag    : runmw0
+  runtime   : 71.5
+  multistep : 4
+  centerlevl: 4
+  infile    : OUT.runmw0.chkpt
+  dynfracA  : 0.002
+  dynfracV  : 0.05
+  dynfracP  : 0.02
+  VERBOSE   : 4
+  use_cuda  : True
+
+Components:
+  - name         : mwhalo
+    bodyfile     : MW0/halo.bods.diag
+    parameters   :
+      nlevel     : 1
+      EJ         : 2
+      EJdamp     : 1.0
+      nEJkeep    : 1
+      nEJwant    : 100000
+      EJdryrun   : true
+    force        :
+      id         : sphereSL
+      parameters :
+        numr     : 2000
+        rmin     : 0.00001
+        rmax     : 2.0
+        Lmax     : 6
+        nmax     : 20
+        rmapping : 0.0667
+        self_consistent : true
+        modelname : Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt
+        cachename : EinastoR20
+
+  - name         : mwdisc
+    bodyfile     : MW0/disc.bods.diag
+    parameters   :
+      EJdryrun   : true
+      EJ         : 2
+      nEJkeep    : 1
+      nEJwant    : 10000
+      EJkinE     : false
+      EJext      : false
+      EJdiag     : false
+    force        :
+      id         : cylinder
+      parameters :
+        acyl       : 0.029
+        hcyl       : 0.004
+        lmaxfid    : 72
+        mmax       : 6
+        nmaxfid    : 32
+        nmax       : 20
+        ncylodd    : 8
+        ncylnx     : 256
+        ncylny     : 128
+        rcylmin    : 0.001
+        rcylmax    : 20.0
+        rnum       : 200
+        pnum       : 1
+        tnum       : 80
+        vflag      : 16
+        logr       : true
+        self_consistent : true
+        eof_file   : .MWeof
+
+Output:
+  - id : outlog
+    parameters : {nint : 1}
+  - id : outpsn
+    parameters : {nint : 10}
+  - id : outcoef
+    parameters : {filename : outcoef.mwhalo0, name : mwhalo, nint : 1}
+  - id : outcoef
+    parameters : {filename : outcoef.mwdisk0, name : mwdisc, nint : 1}
+
+External:
+
+Interaction:
