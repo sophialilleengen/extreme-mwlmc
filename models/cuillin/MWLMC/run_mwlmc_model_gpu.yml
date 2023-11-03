@@ -35,7 +35,7 @@ Components:
         nmax     : 20
         rmapping : 0.0667
         self_consistent : true
-        modelname : Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt
+        modelname : ../MW/Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt
         cachename : EinastoR20
 
   - name         : mwdisc
@@ -68,7 +68,7 @@ Components:
         vflag      : 16
         logr       : true
         self_consistent : true
-        eof_file   : .MWeof
+        eof_file   : ../.MWeof
 
   - name         : lmchalo
     bodyfile     : ../LMC/LMC0/transformedlmchalo.bods
@@ -96,7 +96,7 @@ Components:
         nmax     : 20
         rmapping : 0.0667
         self_consistent : true
-        modelname : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc30.txt
+        modelname : ../LMC/Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc30.txt
         cachename : EinastoR30
 
   - name         : lmcdisc
@@ -135,7 +135,7 @@ Components:
         vflag      : 16
         logr       : true
         self_consistent : true
-        eof_file   : .LMCeof
+        eof_file   : ../LMC/.LMCeof
 
 Output:
   - id : outlog
