@@ -4,7 +4,7 @@
 #SBATCH -p GPU                             # set partition (queue)
 #SBATCH --nodes=1                          # set node number
 #SBATCH --gres=gpu:3                       # set GPU number
-#SBATCH --ntasks=1                         # set task number
+#SBATCH --ntasks=3                         # set task number
 #SBATCH --mem=24G                          # set memory request
 #SBATCH --time=71:00:00                        # set max wallclock time
 #SBATCH --output=job-%N-%j.out                 # set output log name
