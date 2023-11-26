@@ -1,7 +1,7 @@
 Global:
   dtime     : 0.002
   ldlibdir  : /home/mpetersen/lib/user
-  outdir    : /cephfs/mpetersen/extreme-mwlmc/models/cuillin/MW/MW0
+  outdir    : /disk14/mpetersen/extreme-mwlmc/models/cuillin/MW/MW0
   nsteps    : 1000
   runtag    : runmw0b
   runtime   : 71.5
@@ -12,7 +12,6 @@ Global:
   dynfracV  : 0.05
   dynfracP  : 0.02
   VERBOSE   : 4
-  use_cuda  : True
 
 Components:
   - name         : mwhalo
