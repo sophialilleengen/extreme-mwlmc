@@ -1,7 +1,7 @@
 Global:
   dtime     : 0.002
   ldlibdir  : /home/mpetersen/lib/user
-  outdir    : /cephfs/mpetersen/extreme-mwlmc/models/cuillin/LMC/LMC0
+  outdir    : /disk14/mpetersen/extreme-mwlmc/models/cuillin/LMC/LMC0
   nsteps    : 1000
   runtag    : runlmc0
   runtime   : 71.5
@@ -16,7 +16,7 @@ Global:
 
 Components:
   - name         : lmchalo
-    bodyfile     : halo.bods.diag
+    bodyfile     : LMC0/halo.10M.bods.diag
     parameters   :
       nlevel     : 1
       EJ         : 2
@@ -34,11 +34,11 @@ Components:
         nmax     : 20
         rmapping : 0.0667
         self_consistent : true
-        modelname : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc30.txt
-        cachename : EinastoR30
+        modelname : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc32.txt
+        cachename : EinastoR32
 
   - name         : lmcdisc
-    bodyfile     : disc.bods.diag
+    bodyfile     : LMC0/disc.1M.bods.diag
     parameters   :
       EJdryrun   : true
       EJ         : 2
@@ -60,7 +60,7 @@ Components:
         ncylnx     : 256
         ncylny     : 128
         rcylmin    : 0.001
-        rcylmax    : 20.0
+        rcylmax    : 50.0
         rnum       : 200
         pnum       : 1
         tnum       : 80

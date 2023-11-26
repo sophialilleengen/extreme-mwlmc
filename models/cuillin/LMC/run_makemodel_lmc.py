@@ -5,8 +5,8 @@ from scipy import special
 rsphysical    = 4.25 # kpc
 rhosphysical  = 8.56e6 # Msun/kpc^3
 alpha         = 0.16
-rtruncfactor  = 31    # how many scale radii should we apply a rolloff?
-Mtot          = 0.3   # what is the mass in ratio units of total mass to the MW?
+rtruncfactor  = 32    # how many scale radii should we apply a rolloff?
+Mtot          = 0.2   # what is the mass in ratio units of total mass to the MW?
 
 # convert to G=1 units
 astronomicalG = 0.0000043009125 # gravitational constant, (km/s)^2 * kpc / Msun
