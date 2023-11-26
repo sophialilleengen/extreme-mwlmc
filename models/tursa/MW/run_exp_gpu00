@@ -3,7 +3,7 @@
 #SBATCH --mail-user=michael.petersen@roe.ac.uk # set your mail address
 #SBATCH -p gpu                             # set partition (queue)
 #SBATCH --qos=standard
-#SBATCH --nodes=4                          # set node number
+#SBATCH --nodes=1                          # set node number
 #SBATCH --gres=gpu:4                       # set GPU number
 #SBATCH --ntasks-per-gpu=1                         # set task number
 #SBATCH --cpus-per-task=8
