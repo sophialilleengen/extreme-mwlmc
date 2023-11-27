@@ -2,11 +2,11 @@
 # standard parameters
 #
 # disk basis parameters
-ASCALE      : 0.029              # Radial scale length for disk basis construction
-HSCALE      : 0.004            # Vertical scale length for disk basis construction
+ASCALE      : 0.014              # Radial scale length for disk basis construction
+HSCALE      : 0.003            # Vertical scale length for disk basis construction
 LMAXFID     : 72               # Number of spherical harmonic functions for large disc basis
 NMAXFID     : 32                # Number of radial functions for large disc basis
-cachefile   : .MWeof   # The cache file for the cylindrical basis
+cachefile   : .LMCeof   # The cache file for the cylindrical basis
 MMAX        : 6                 # Number of azimuthal functions for the disk
 NMAXD       : 20                # Number of disk radial functions to keep
 NODD        : 8                 # Number of vertically-asymmetric basis terms to keep
@@ -14,23 +14,23 @@ NOUT        : 16                # Deprecated?
 ignore      : false             # If true, will force remaking the disc basis
 
 # disk realization parameters
-disk_mass   : 0.092            # Disk mass
-ndisk       : 1840000           # Number of disk particles
-dbods       : MW0/disc.1.84Mh.bods         # The output bodyfile for the stellar disc
+disk_mass   : 0.0031            # Disk mass
+ndisk       : 2450000           # Number of disk particles
+dbods       : LMC00/disc.2.45Mb.bods         # The output bodyfile for the stellar disc
 ToomreQ     : 1.8               # Toomre Q value for disc (constant across disc)
-scale_length: 0.029              # Scale length of the realised disc
-scale_height: 0.004            # Scale height of the realised disc
+scale_length: 0.014              # Scale length of the realised disc
+scale_height: 0.003            # Scale height of the realised disc
 
 # halo basis parameters
-halofile1   : Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt   # Halo spherical model table
+halofile1   : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc32.txt   # Halo spherical model table
 LMAX        : 6                 # Number of azimuthal functions for the halo
 NMAXH       : 20                # Number of halo radial terms
 multi       : false              # If true, Turn on multimass halo generation
 halofile2   : SLGridSph.fake    # Number density profile for multimass halo generation (if multi: true)
 
 # halo realisation parameters
-nhalo       : 32000000          # Number of halo particles
-hbods       : MW0/halo.32Mh.bods         # The output bodyfile for the halo
+nhalo       : 80000000          # Number of halo particles
+hbods       : LMC00/halo.80M.bods         # The output bodyfile for the halo
 evolved     : false             # If true, user may input an existing halo to build around
 
 #
@@ -51,11 +51,11 @@ RNUM        : 200               # Number of radial knots for EmpCylSL basis cons
 TNUM        : 80                # Number of cos(theta) knots for EmpCylSL basis construction quadrature
 PNUM        : 1                 # Number of azimthal knots for EmpCylSL basis construction quadrature
 RCYLMIN     : 0.001             # Minimum disk basis radius
-RCYLMAX     : 20.0              # Maximum disk basis radius
+RCYLMAX     : 50.0              # Maximum disk basis radius
 dtype       : exponential       # Type of disk for analytic function
 CMAPR       : 1                 # Radial coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
 CMAPZ       : 1                 # Vertical coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
-RTRUNC      : 0.1               # Maximum disk radius for erf truncation of EOF conditioning density
+RTRUNC      : 0.2               # Maximum disk radius for erf truncation of EOF conditioning density
 NUMX        : 256               # Number of radial points in disk basis
 NUMY        : 128               # Number of vertical points in disk basis
 ASHIFT      : 0.0               # Fraction of scale length for shift in conditioning function

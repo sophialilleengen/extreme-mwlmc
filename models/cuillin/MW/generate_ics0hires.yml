@@ -6,17 +6,17 @@ ASCALE      : 0.029              # Radial scale length for disk basis constructi
 HSCALE      : 0.004            # Vertical scale length for disk basis construction
 LMAXFID     : 72               # Number of spherical harmonic functions for large disc basis
 NMAXFID     : 32                # Number of radial functions for large disc basis
-cachefile   : .MWeof   # The cache file for the cylindrical basis
+cachefile   : .MWeofhires   # The cache file for the cylindrical basis
 MMAX        : 6                 # Number of azimuthal functions for the disk
 NMAXD       : 20                # Number of disk radial functions to keep
 NODD        : 8                 # Number of vertically-asymmetric basis terms to keep
 NOUT        : 16                # Deprecated?
-ignore      : false             # If true, will force remaking the disc basis
+ignore      : true             # If true, will force remaking the disc basis
 
 # disk realization parameters
 disk_mass   : 0.092            # Disk mass
 ndisk       : 1840000           # Number of disk particles
-dbods       : MW0/disc.1.84Mh.bods         # The output bodyfile for the stellar disc
+dbods       : MW0/disc.1.84M.bods         # The output bodyfile for the stellar disc
 ToomreQ     : 1.8               # Toomre Q value for disc (constant across disc)
 scale_length: 0.029              # Scale length of the realised disc
 scale_height: 0.004            # Scale height of the realised disc
@@ -30,7 +30,7 @@ halofile2   : SLGridSph.fake    # Number density profile for multimass halo gene
 
 # halo realisation parameters
 nhalo       : 32000000          # Number of halo particles
-hbods       : MW0/halo.32Mh.bods         # The output bodyfile for the halo
+hbods       : MW0/halo.32M.bods         # The output bodyfile for the halo
 evolved     : false             # If true, user may input an existing halo to build around
 
 #
@@ -51,13 +51,13 @@ RNUM        : 200               # Number of radial knots for EmpCylSL basis cons
 TNUM        : 80                # Number of cos(theta) knots for EmpCylSL basis construction quadrature
 PNUM        : 1                 # Number of azimthal knots for EmpCylSL basis construction quadrature
 RCYLMIN     : 0.001             # Minimum disk basis radius
-RCYLMAX     : 20.0              # Maximum disk basis radius
+RCYLMAX     : 100.0              # Maximum disk basis radius
 dtype       : exponential       # Type of disk for analytic function
 CMAPR       : 1                 # Radial coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
 CMAPZ       : 1                 # Vertical coordinate mapping type for cylindrical grid  (0=none, 1=rational fct)
 RTRUNC      : 0.1               # Maximum disk radius for erf truncation of EOF conditioning density
-NUMX        : 256               # Number of radial points in disk basis
-NUMY        : 128               # Number of vertical points in disk basis
+NUMX        : 512               # Number of radial points in disk basis
+NUMY        : 256               # Number of vertical points in disk basis
 ASHIFT      : 0.0               # Fraction of scale length for shift in conditioning function
 
 # disk velocity realization parameters

@@ -1,13 +1,13 @@
 Global:
-  dtime     : 0.002
+  dtime     : 0.0016
   ldlibdir  : /home/mpetersen/lib/user
-  outdir    : /cephfs/mpetersen/extreme-mwlmc/models/cuillin/MW/MW0
-  nsteps    : 1000
-  runtag    : runmw0b
+  outdir    : /disk14/mpetersen/extreme-mwlmc/models/cuillin/MW/MW0
+  nsteps    : 3
+  runtag    : runmw0c
   runtime   : 71.5
-  multistep : 4
-  centerlevl: 4
-  infile    : OUT.runmw0b.chkpt
+  multistep : 3
+  centerlevl: 3
+  infile    : OUT.runmw0c.chkpt
   dynfracA  : 0.002
   dynfracV  : 0.05
   dynfracP  : 0.02
@@ -40,6 +40,7 @@ Components:
   - name         : mwdisc
     bodyfile     : MW0/disc.1.84M.bods.diag
     parameters   :
+      nlevel     : 1
       EJdryrun   : true
       EJ         : 2
       nEJkeep    : 1
@@ -57,17 +58,17 @@ Components:
         nmaxfid    : 32
         nmax       : 20
         ncylodd    : 8
-        ncylnx     : 256
-        ncylny     : 128
+        ncylnx     : 512
+        ncylny     : 256
         rcylmin    : 0.001
-        rcylmax    : 20.0
+        rcylmax    : 100.0
         rnum       : 200
         pnum       : 1
         tnum       : 80
         vflag      : 16
         logr       : true
         self_consistent : true
-        eof_file   : .MWeof
+        eof_file   : .MWeofhires
 
 Output:
   - id : outlog
@@ -75,9 +76,9 @@ Output:
   - id : outpsn
     parameters : {nint : 50}
   - id : outcoef
-    parameters : {filename : outcoef.mwhalo0b, name : mwhalo, nint : 1}
+    parameters : {filename : outcoef.mwhalo0c, name : mwhalo, nint : 1}
   - id : outcoef
-    parameters : {filename : outcoef.mwdisk0b, name : mwdisc, nint : 1}
+    parameters : {filename : outcoef.mwdisk0c, name : mwdisc, nint : 1}
 
 External:
 

@@ -15,8 +15,8 @@ ignore      : false             # If true, will force remaking the disc basis
 
 # disk realization parameters
 disk_mass   : 0.092            # Disk mass
-ndisk       : 1840000           # Number of disk particles
-dbods       : MW0/disc.1.84Mh.bods         # The output bodyfile for the stellar disc
+ndisk       : 46000000          # Number of disk particles
+dbods       : MW0000/disc.46M.bods         # The output bodyfile for the stellar disc
 ToomreQ     : 1.8               # Toomre Q value for disc (constant across disc)
 scale_length: 0.029              # Scale length of the realised disc
 scale_height: 0.004            # Scale height of the realised disc
@@ -29,8 +29,8 @@ multi       : false              # If true, Turn on multimass halo generation
 halofile2   : SLGridSph.fake    # Number density profile for multimass halo generation (if multi: true)
 
 # halo realisation parameters
-nhalo       : 32000000          # Number of halo particles
-hbods       : MW0/halo.32Mh.bods         # The output bodyfile for the halo
+nhalo       : 800000000          # Number of halo particles
+hbods       : MW0000/halo.800M.bods         # The output bodyfile for the halo
 evolved     : false             # If true, user may input an existing halo to build around
 
 #
