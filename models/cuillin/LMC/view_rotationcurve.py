@@ -21,19 +21,19 @@ parameters :
   Lmax     : 6
   nmax     : 20
   rmapping : 0.0667
-  modelname : Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt
-  cachename : EinastoR20
+  modelname : Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc32.txt
+  cachename : EinastoR32
 """
 halobasis = pyEXP.basis.Basis.factory(hconfig)
-halocoefs = pyEXP.coefs.Coefs.factory('outcoef.mwhalo0b')
+halocoefs = pyEXP.coefs.Coefs.factory('outcoef.lmchalo0')
 
 
 
 dconfig = """
 id : cylinder
 parameters :
-  acyl       : 0.029
-  hcyl       : 0.004
+  acyl       : 0.014
+  hcyl       : 0.003
   lmaxfid    : 72
   mmax       : 6
   nmaxfid    : 32
@@ -42,37 +42,16 @@ parameters :
   ncylnx     : 256
   ncylny     : 128
   rcylmin    : 0.001
-  rcylmax    : 20.0
+  rcylmax    : 50.0
   rnum       : 200
   pnum       : 1
   tnum       : 80
   vflag      : 16
   logr       : true
-  eof_file   : ../.MWeof
-"""
-dconfig = """
-id : cylinder
-parameters :
-  acyl       : 0.029
-  hcyl       : 0.004
-  lmaxfid    : 72
-  mmax       : 6
-  nmaxfid    : 32
-  nmax       : 20
-  ncylodd    : 8
-  ncylnx     : 512
-  ncylny     : 256
-  rcylmin    : 0.001
-  rcylmax    : 100.0
-  rnum       : 200
-  pnum       : 1
-  tnum       : 80
-  vflag      : 16
-  logr       : true
-  eof_file   : ../.MWeofhires
+  eof_file   : .LMCeof
 """
 discbasis = pyEXP.basis.Basis.factory(dconfig)
-disccoefs = pyEXP.coefs.Coefs.factory('../outcoef.mwdisk0b')
+disccoefs = pyEXP.coefs.Coefs.factory('outcoef.lmcdisk0')
 
 # make a slice at the first time
 times = disccoefs.Times()[0:1]
@@ -104,6 +83,6 @@ plt.plot(rvir*rvals,vvir*vctotal,color='black')
 plt.xlabel('radius (kpc)')
 plt.ylabel('velocity (km/s)')
 plt.tight_layout()
-plt.savefig('rotation_curve_mw.png',dpi=300)
+plt.savefig('rotation_curve_lmc_c.png',dpi=300)
 
 
