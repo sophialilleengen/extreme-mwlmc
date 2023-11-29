@@ -26,6 +26,7 @@ parameters :
 """
 halobasis = pyEXP.basis.Basis.factory(hconfig)
 halocoefs = pyEXP.coefs.Coefs.factory('outcoef.mwhalo0b')
+halocoefs = pyEXP.coefs.Coefs.factory('outcoef.mwhalo0c')
 
 
 
@@ -69,10 +70,11 @@ parameters :
   tnum       : 80
   vflag      : 16
   logr       : true
-  eof_file   : ../.MWeofhires
+  eof_file   : .MWeofhires
 """
 discbasis = pyEXP.basis.Basis.factory(dconfig)
 disccoefs = pyEXP.coefs.Coefs.factory('../outcoef.mwdisk0b')
+disccoefs = pyEXP.coefs.Coefs.factory('outcoef.mwdisk0c')
 
 # make a slice at the first time
 times = disccoefs.Times()[0:1]
@@ -104,6 +106,6 @@ plt.plot(rvir*rvals,vvir*vctotal,color='black')
 plt.xlabel('radius (kpc)')
 plt.ylabel('velocity (km/s)')
 plt.tight_layout()
-plt.savefig('rotation_curve_mw.png',dpi=300)
+plt.savefig('rotation_curve_mw_c.png',dpi=300)
 
 

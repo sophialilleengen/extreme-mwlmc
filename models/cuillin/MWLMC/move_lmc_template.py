@@ -12,18 +12,18 @@ from exptool.observables import transform
 
 
 # set up the ICs for the centre of the halo
-dx  = 0.0
-dy  = 2.0
-dz  = 1.0
-dvx = 0.0
-dvy = -1.0
-dvz = -0.5
+dx  = {{OFFSETX}}
+dy  = {{OFFSETY}}
+dz  = {{OFFSETZ}}
+dvx = {{OFFSETU}}
+dvy = {{OFFSETW}}
+dvz = {{OFFSETZ}}
 
 
 for infile in ['../LMC/LMC00/disc.1Ms.bods.diag','../LMC/LMC00/halo.5Ms.bods.diag']:
     g = open(infile,'r')
     nbodies = int(g.readline().split()[0])
-    f = open('MWLMC0/transformed{}.bods'.format(infile.split('/')[-1].split('.')[0]),'w')
+    f = open('MWLMC0/transformed{}_{{NAME}}.bods'.format(infile.split('/')[-1].split('.')[0]),'w')
     print('{} 0 0'.format(nbodies),file=f)
     for i in range(0,nbodies):
         h = g.readline().split()
