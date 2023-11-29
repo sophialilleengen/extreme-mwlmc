@@ -1,12 +1,12 @@
 Global:
-  dtime     : 0.002
+  dtime     : 0.0016
   ldlibdir  : /home/mpetersen/lib/user
-  outdir    : /cephfs/mpetersen/extreme-mwlmc/models/cuillin/MWLMC/MWLMC0
-  nsteps    : 4000
+  outdir    : /disk14/mpetersen/extreme-mwlmc/models/cuillin/MWLMC/MWLMC0
+  nsteps    : 2000
   runtag    : runmwlmc0
   runtime   : 71.5
-  multistep : 4
-  centerlevl: 4
+  multistep : 3
+  centerlevl: 3
   infile    : OUT.runmwlmc0.chkpt
   dynfracA  : 0.002
   dynfracV  : 0.05
@@ -16,7 +16,7 @@ Global:
 
 Components:
   - name         : mwhalo
-    bodyfile     : ../MW/MW0/halo.bods.diag
+    bodyfile     : ../MW/MW0/halo.5Ms.bods.diag
     parameters   :
       nlevel     : 1
       EJ         : 2
@@ -39,7 +39,7 @@ Components:
         cachename : EinastoR20
 
   - name         : mwdisc
-    bodyfile     : ../MW/MW0/disc.bods.diag
+    bodyfile     : ../MW/MW0/disc.1Ms.bods.diag
     parameters   :
       EJdryrun   : false
       EJ         : 2
@@ -54,24 +54,24 @@ Components:
         acyl       : 0.029
         hcyl       : 0.004
         lmaxfid    : 72
-        mmax       : 6
+        mmax       : 4
         nmaxfid    : 32
-        nmax       : 20
-        ncylodd    : 8
-        ncylnx     : 256
-        ncylny     : 128
+        nmax       : 10
+        ncylodd    : 4
+        ncylnx     : 512
+        ncylny     : 256
         rcylmin    : 0.001
-        rcylmax    : 20.0
+        rcylmax    : 100.0
         rnum       : 200
         pnum       : 1
         tnum       : 80
         vflag      : 16
         logr       : true
         self_consistent : true
-        eof_file   : ../.MWeof
+        eof_file   : ../MW/.MWeofhires2
 
   - name         : lmchalo
-    bodyfile     : ../LMC/LMC0/transformedlmchalo.bods
+    bodyfile     : MWLMC0/transformedlmchalo0.bods
     parameters   :
       nlevel     : 1
       EJ         : 2
@@ -93,14 +93,14 @@ Components:
         rmin     : 0.00001
         rmax     : 2.0
         Lmax     : 6
-        nmax     : 20
+        nmax     : 12
         rmapping : 0.0667
         self_consistent : true
-        modelname : ../LMC/Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc30.txt
-        cachename : EinastoR30
+        modelname : ../LMC/Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc33.txt
+        cachename : EinastoR33
 
   - name         : lmcdisc
-    bodyfile     : ../LMC/LMC0/transformedlmcdisc.bods
+    bodyfile     : MWLMC0/transformedlmcdisc0.bods
     parameters   :
       EJdryrun   : false
       EJ         : 2
@@ -123,25 +123,25 @@ Components:
         lmaxfid    : 72
         mmax       : 6
         nmaxfid    : 32
-        nmax       : 20
-        ncylodd    : 8
-        ncylnx     : 256
-        ncylny     : 128
+        nmax       : 10
+        ncylodd    : 4
+        ncylnx     : 512
+        ncylny     : 256
         rcylmin    : 0.001
-        rcylmax    : 20.0
+        rcylmax    : 200.0
         rnum       : 200
         pnum       : 1
         tnum       : 80
         vflag      : 16
         logr       : true
         self_consistent : true
-        eof_file   : ../LMC/.LMCeof
+        eof_file   : ../LMC/.LMCeofhires2
 
 Output:
   - id : outlog
     parameters : {nint : 1}
   - id : outpsn
-    parameters : {nint : 10}
+    parameters : {nint : 100}
   - id : outcoef
     parameters : {filename : outcoef.mwhalo0, name : mwhalo, nint : 1}
   - id : outcoef

@@ -3,8 +3,8 @@
 #SBATCH --mail-user=michael.petersen@roe.ac.uk # set your mail address
 #SBATCH -p GPU                             # set partition (queue)
 #SBATCH --nodes=1                          # set node number
-#SBATCH --gres=gpu:4                       # set GPU number
-#SBATCH --ntasks=4                         # set task number
+#SBATCH --gres=gpu:2                       # set GPU number
+#SBATCH --ntasks=2                         # set task number
 #SBATCH --mem=24G                          # set memory request
 #SBATCH --time=71:00:00                        # set max wallclock time
 #SBATCH --output=job-%N-%j.out                 # set output log name
@@ -19,7 +19,7 @@ module load cuda hdf5-openmpi
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/mpetersen/lib:/home/mpetersen/local/lib:/home/mpetersen/lib
 
 # change directory to proper location
-cd /cephfs/mpetersen/extreme-mwlmc/models/cuillin/MWLMC
+cd /disk14/mpetersen/extreme-mwlmc/models/cuillin/MWLMC
 
 # stamp output with details
 pwd; hostname; date
