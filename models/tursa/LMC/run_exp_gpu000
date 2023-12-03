@@ -1,0 +1,64 @@
+#!/bin/bash
+#SBATCH --job-name=LMC000 	                   # set job name
+#SBATCH --mail-user=michael.petersen@roe.ac.uk # set your mail address
+#SBATCH -p gpu                             # set partition (queue)
+#SBATCH --qos=standard
+#SBATCH --nodes=8                          # set node number
+#SBATCH --ntasks-per-node=4
+#SBATCH --gres=gpu:4                       # set GPU number per node
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=128G
+#SBATCH --time=47:00:00                        # set max wallclock time
+#SBATCH --output=job-%N-%j.out                 # set output log name
+#SBATCH --error=job-%N-%j.error                # set error log name %N=first node, %j=job number
+#SBATCH --mail-type=ALL                        # set mail alerts
+
+# budgeting
+#SBATCH --account=dp309
+
+# set up multithreading
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+# load modules
+module use /home/y07/shared/tursa-modules
+module load cmake
+module load gcc/9.3.0 cuda/11.4.1  openmpi/4.1.1-cuda11.4.1
+
+# see https://epcced.github.io/dirac-docs/tursa-user-guide/scheduler/#example-job-submission-scripts
+# recommended MPI/OMP settings
+
+# Settings for MPI performance
+export OMPI_MCA_btl=^uct,openib
+export UCX_TLS=rc,rc_x,sm,cuda_copy,cuda_ipc,gdr_copy
+export UCX_RNDV_THRESH=16384
+export UCX_RNDV_SCHEME=put_zcopy
+export UCX_IB_GPU_DIRECT_RDMA=yes
+export UCX_MEMTYPE_CACHE=n
+
+# Settings for MPI-IO
+export OMPI_MCA_io=romio321
+export OMPI_MCA_btl_openib_allow_ib=true
+export OMPI_MCA_btl_openib_device_type=infiniband
+export OMPI_MCA_btl_openib_if_exclude=mlx5_1,mlx5_2,mlx5_3
+
+# prepend a new set of libraries to point at EXP executable:
+export LD_LIBRARY_PATH=/home/dp309/dp309/dc-pete4/lib:$LD_LIBRARY_PATH
+
+# change directory to proper location
+cd /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/
+
+# stamp output with details
+pwd; hostname; date
+
+# set the execution command
+APPLICATION="/home/dp309/dp309/dc-pete4/bin/exp"
+OPTIONS="run_lmc_model_gpu000.yml"
+
+# stamp output with execution command
+echo ${APPLICATION} ${OPTIONS}
+
+# run execution command
+mpirun -np $SLURM_NTASKS --map-by numa -x LD_LIBRARY_PATH --bind-to none ./wrapper.sh ${APPLICATION} ${OPTIONS}
+
+# stamp output with end time
+date

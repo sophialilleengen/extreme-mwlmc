@@ -103,8 +103,3 @@ L  Number    dN/dL     N(<=L)
 4  493149    0.005     1.000     
 ```
 
-### Time Tracking (loose)
-| Date | Hours Remaining | Notes |
-|------------------|------------------|--------------|
-| 26-Nov-2023 | 8,763.8 GPUhs | Test run of MW0 on single GPU node (4 GPUs)|
-| 28-Nov-2023 | 8,359.6 GPUhs | Test run of MW000 on 16 GPUs |
