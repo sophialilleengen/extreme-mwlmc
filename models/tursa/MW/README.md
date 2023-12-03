@@ -5,6 +5,13 @@ See here: https://epcced.github.io/dirac-docs/tursa-user-guide/scheduler/#exampl
 
 This directory has working recipes for Tursa.
 
+| Run name | Ndisc | Nhalo |
+|----------|----------|---------|
+| 00 | 10M | 50M |
+| 000 | 100M | 100M |
+| 0000 | 46M | 800M |
+| 00000 | 155M | 1670M |
+
 ### Benchmarks
 
 A run with 800M halo, 46M disc, on 32 GPUs has the following parameters:
