@@ -80,12 +80,12 @@ Components:
       nEJwant    : 100000
       EJdryrun   : false
       EJdiag     : true
-      EJx0       : 0.0
-      EJy0       : 2.0
-      EJz0       : 1.0
-      EJu0       : 0.0
-      EJv0       : -1.0
-      EJw0       : -0.5
+      EJx0       : {{OFFSETX}}
+      EJy0       : {{OFFSETY}}
+      EJz0       : {{OFFSETZ}}
+      EJu0       : {{OFFSETU}}
+      EJv0       : {{OFFSETV}}
+      EJw0       : {{OFFSETW}}
     force        :
       id         : sphereSL
       parameters :
@@ -109,12 +109,12 @@ Components:
       EJkinE     : false
       EJext      : false
       EJdiag     : true
-      EJx0       : 0.0
-      EJy0       : 2.0
-      EJz0       : 1.0
-      EJu0       : 0.0
-      EJv0       : -1.0
-      EJw0       : -0.5
+      EJx0       : {{OFFSETX}}
+      EJy0       : {{OFFSETY}}
+      EJz0       : {{OFFSETZ}}
+      EJu0       : {{OFFSETU}}
+      EJv0       : {{OFFSETV}}
+      EJw0       : {{OFFSETW}}
     force        :
       id         : cylinder
       parameters :

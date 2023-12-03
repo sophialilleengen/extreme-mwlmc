@@ -5,6 +5,11 @@ The models here are the base LMC models, at a variety of particle numbers.
 
 The model with 160M halo, 2.45M disc is half the eventual target. (To even the mass per particle, go to 2.48M disc.)
 
+I've been sequentually turning down the mass of the LMC; different models have different masses.
+- 15% Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc33.txt
+- 20% Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc32.txt
+- 30% Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc31.txt
+
 ### Benchmarks
 
 For 160M halo, 2.45M disc (resulting in nearly the same mass per particle), we see

@@ -12,14 +12,26 @@ from exptool.observables import transform
 
 
 # set up the ICs for the centre of the halo
-dx  = 0.0
-dy  = 2.0
-dz  = 1.0
-dvx = 0.0
-dvy = -1.0
-dvz = -0.5
+dx  = {{OFFSETX}}
+dy  = {{OFFSETY}}
+dz  = {{OFFSETZ}}
+dvx = {{OFFSETU}}
+dvy = {{OFFSETW}}
+dvz = {{OFFSETZ}}
 
 
+for infile in ['../LMC/LMC00/disc.1Ms.bods.diag','../LMC/LMC00/halo.5Ms.bods.diag']:
+    g = open(infile,'r')
+    nbodies = int(g.readline().split()[0])
+    f = open('MWLMC0/transformed{}_{{NAME}}.bods'.format(infile.split('/')[-1].split('.')[0]),'w')
+    print('{} 0 0'.format(nbodies),file=f)
+    for i in range(0,nbodies):
+        h = g.readline().split()
+        print(float(h[0]),float(h[1])+dx,float(h[2])+dy,float(h[3])+dz,float(h[4])+dvx,float(h[5])+dvy,float(h[6])+dvz,file=f)
+    f.close()
+    
+
+"""
 runtag = 'runlmc0'
 
 for comp in ['lmcdisc','lmchalo']:
@@ -35,3 +47,4 @@ for comp in ['lmcdisc','lmchalo']:
     for i in range(0,nbodies):
         print(I.data['m'][i],newx[i],newy[i],newz[i],newvx[i],newvy[i],newvz[i],file=f)
     f.close()
+"""
