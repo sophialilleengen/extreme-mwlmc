@@ -1,7 +1,21 @@
 #!/bin/bash
 
-# example:
-# ./create_trajectory_files.sh 0 1.0 2.0 0.0 1.5 2.5 RunA
+# the original trajectory for Lilleengen+ (2023) models
+# ./create_trajectory_files.sh 0.16 2.15 -.12 -0.02 -0.85 -0.25 RunA
+
+# something like the original trajectories but not
+# ./create_trajectory_files.sh 0.16 2.15 0.5 -0.02 -0.85 -0.35 RunD
+
+# a simple rewind trajectory
+# ./create_trajectory_files.sh 0.247 2.53 0.238 -0.011 -0.597 -0.355 RunH
+
+# and some perturbations
+# ./create_trajectory_files.sh 0.247 2.63 0.238 -0.011 -0.597 -0.355 RunI
+
+# ./create_trajectory_files.sh 0.247 2.53 0.338 -0.011 -0.597 -0.355 RunJ
+# ./create_trajectory_files.sh 0.247 2.53 0.138 -0.011 -0.597 -0.355 RunK
+# ./create_trajectory_files.sh 0.247 2.43 0.238 -0.011 -0.597 -0.355 RunL
+# ./create_trajectory_files.sh 0.247 2.53 0.238 -0.011 -0.597 -0.455 RunM
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 7 ]; then
@@ -47,6 +61,7 @@ sed -e "s/{{OFFSETX}}/$X/g" \
     -e "s/{{OFFSETU}}/$U/g" \
     -e "s/{{OFFSETV}}/$V/g" \
     -e "s/{{OFFSETW}}/$W/g" \
+    -e "s/{{NAME}}/$NAME/g" \
     "$input_file" > "$output_file"
 
 echo "Replacement completed. Output saved to $output_file"

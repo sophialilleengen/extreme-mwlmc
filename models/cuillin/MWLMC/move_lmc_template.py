@@ -16,8 +16,8 @@ dx  = {{OFFSETX}}
 dy  = {{OFFSETY}}
 dz  = {{OFFSETZ}}
 dvx = {{OFFSETU}}
-dvy = {{OFFSETW}}
-dvz = {{OFFSETZ}}
+dvy = {{OFFSETV}}
+dvz = {{OFFSETW}}
 
 
 for infile in ['../LMC/LMC00/disc.1Ms.bods.diag','../LMC/LMC00/halo.5Ms.bods.diag']:

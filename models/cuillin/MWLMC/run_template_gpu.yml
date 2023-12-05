@@ -3,11 +3,11 @@ Global:
   ldlibdir  : /home/mpetersen/lib/user
   outdir    : /disk14/mpetersen/extreme-mwlmc/models/cuillin/MWLMC/MWLMC0
   nsteps    : 2000
-  runtag    : runmwlmc0
+  runtag    : {{NAME}}
   runtime   : 71.5
   multistep : 3
   centerlevl: 3
-  infile    : OUT.runmwlmc0.chkpt
+  infile    : OUT.{{NAME}}.chkpt
   dynfracA  : 0.002
   dynfracV  : 0.05
   dynfracP  : 0.02
@@ -143,13 +143,13 @@ Output:
   - id : outpsn
     parameters : {nint : 100}
   - id : outcoef
-    parameters : {filename : outcoef.mwhalo0, name : mwhalo, nint : 1}
+    parameters : {filename : outcoef.mwhalo.{{NAME}}, name : mwhalo, nint : 1}
   - id : outcoef
-    parameters : {filename : outcoef.mwdisk0, name : mwdisc, nint : 1}
+    parameters : {filename : outcoef.mwdisk.{{NAME}}, name : mwdisc, nint : 1}
   - id : outcoef
-    parameters : {filename : outcoef.lmchalo0, name : lmchalo, nint : 1}
+    parameters : {filename : outcoef.lmchalo.{{NAME}}, name : lmchalo, nint : 1}
   - id : outcoef
-    parameters : {filename : outcoef.lmcdisk0, name : lmcdisc, nint : 1}
+    parameters : {filename : outcoef.lmcdisk.{{NAME}}, name : lmcdisc, nint : 1}
 
 External:
 
