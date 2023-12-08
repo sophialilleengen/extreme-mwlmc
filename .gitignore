@@ -1,3 +1,6 @@
+# DS files
+*.DS_Store
+
 # job files
 job*
 

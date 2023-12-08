@@ -22,6 +22,11 @@
 # ./create_trajectory_files.sh 0.247 2.53 0.238 -0.051 -0.597 -0.355 RunP
 # ./create_trajectory_files.sh 0.247 2.43 0.238 -0.011 -0.597 -0.355 RunQ
 
+# ./create_trajectory_files.sh 0.247 2.53 0.238 -0.011 -0.597 -0.405 RunR
+# ./create_trajectory_files.sh 0.147 2.53 0.238 -0.011 -0.597 -0.455 RunS
+# ./create_trajectory_files.sh 0.197 2.53 0.238 -0.011 -0.597 -0.455 RunT
+# ./create_trajectory_files.sh 0.197 2.53 0.238 -0.011 -0.597 -0.405 RunU
+
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 7 ]; then
