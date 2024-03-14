@@ -43,15 +43,20 @@ def read_outlog(filename):
 
 import matplotlib.pyplot as plt
 
-comp = 'mwdisc'
+comp = 'mwhalo'
 O = read_outlog('OUTLOG.runmw0brcpu')
 plt.plot(O['global']['time'],O[comp]['E'],color='black')
 plt.savefig('/Users/mpetersen/Downloads/tE.png',dpi=300)
 
+O = read_outlog('OUTLOG.runmw0brcpu2')
+plt.plot(O['global']['time'],O[comp]['E'],color='grey')
+plt.savefig('/Users/mpetersen/Downloads/tE.png',dpi=300)
+
+
 O = read_outlog('OUTLOG.runmw0br')
-plt.plot(O['global']['time'],O[comp]['E'],color='red')
+plt.scatter(O['global']['time'],O[comp]['E'],color='red')
 plt.savefig('/Users/mpetersen/Downloads/tE.png',dpi=300)
 
 O = read_outlog('OUTLOG.runmw0br2')
-plt.plot(O['global']['time'],O[comp]['E'],color='blue')
+plt.scatter(O['global']['time'],O[comp]['E'],color='blue')
 plt.savefig('/Users/mpetersen/Downloads/tE.png',dpi=300)

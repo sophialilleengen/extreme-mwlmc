@@ -8,3 +8,20 @@
 | 03-Dec-2023 | 7,343.7 GPUhs | 341 | 255M | 2600 | Primary solo LMC run, LMC000, on 32 GPUs (`multistep:3,dt:0.0016`) |
 
 
+
+## Moving the LMC to the starting location
+
+This will be best accomplished using the `dev` queue to move off the head node but also get going immediately.
+
+## The body files
+
+All particles are 6.e-10 in virial units.
+
+MWhalo: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag
+
+MWdisc: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag
+
+LMChalo: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/halo.250M.bods.diag
+
+LMCdisc: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/disc.5M.bods.diag
+

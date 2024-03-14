@@ -28,6 +28,15 @@ def read_orient(infile):
     return t,x,y,z
 
 
+def read_orient_angles(infile):
+    O = np.genfromtxt(infile,skip_header=3)
+    t = O[:,0]
+    x = O[:,6]
+    y = O[:,7]
+    z = O[:,8]
+    return t,x,y,z
+
+
 
 def process_velocities(t,x,y,z,nsmth=1001,norder=2):
     dt = t[101]-t[100]
@@ -95,6 +104,42 @@ plt.xlabel('distance')
 plt.ylabel('time')
 plt.tight_layout()
 plt.savefig('trajectory_{}.png'.format(runtag),dpi=300)
+
+
+
+
+# Sophia's
+targetx = np.array([-0.61436097, -41.02036742, -26.83297465])
+targetv = np.array([-69.85587904, -221.68751413, 214.15271769])
+
+# Mike's
+targetx = np.array([ -0.425172   -41.01213084 -26.82899933])
+targetv = np.array([ -54.62928797  -208.98991061 198.85436269])
+
+
+for runtag in ['RunA','RunD','RunH','RunI','RunJ','RunK','RunL','RunM','RunN','RunO','RunP','RunQ','RunR','RunS','RunT','RunU']:
+    O = dict()
+    for comp in ['mwhalo','lmchalo','mwdisc','lmcdisc']:
+        O[comp] = np.genfromtxt(indir+comp+'.orient.'+runtag+'.smth',skip_header=1)
+    virialradius=122.0
+    virialvelocity=119.
+    nmax = np.nanmin([O['lmcdisc'].shape[0],O['mwdisc'].shape[0]])
+    lmcdiff = O['lmcdisc'][0:nmax] - O['mwdisc'][0:nmax]
+    xlmcd = lmcdiff[:,1:4]*virialradius
+    vlmcd = lmcdiff[:,4:7]*virialvelocity
+    sigmax = 1.0
+    sigmav = 10.0
+    xdiff = np.linalg.norm((xlmcd-targetx)/sigmax,axis=1)
+    vdiff = np.linalg.norm((vlmcd-targetv)/sigmav,axis=1)
+    bestval = np.nanargmin(xdiff[0:nmax]+vdiff[0:nmax])
+    print(runtag,np.nanmin(xdiff[0:nmax]+vdiff[0:nmax]))
+    print(O['lmcdisc'][bestval,0])
+    print(xlmcd[bestval],np.linalg.norm(xlmcd[bestval]))
+    print(vlmcd[bestval],np.linalg.norm(vlmcd[bestval]))
+    print(xlmcd[0]/virialradius,np.linalg.norm(xlmcd[0]/virialradius))
+    print(vlmcd[0]/virialvelocity,np.linalg.norm(vlmcd[0]/virialvelocity))
+    print('------------------------------------')
+
 
 """
 for p in [0,1,2]:
