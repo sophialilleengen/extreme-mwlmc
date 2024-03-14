@@ -1,0 +1,141 @@
+Global:
+  dtime     : 0.0016
+  ldlibdir  : /home/dp309/dp309/dc-pete4/lib/user/
+  outdir    : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC
+  nsteps    : 4000
+  runtag    : runmwlmc
+  runtime   : 71.5
+  multistep : 3
+  centerlevl: 3
+  infile    : OUT.runmwlmc.chkpt
+  dynfracA  : 0.002
+  dynfracV  : 0.05
+  dynfracP  : 0.02
+  VERBOSE   : 4
+  use_cuda  : True
+  ngpus     : 4
+
+Components:
+  - name         : mwhalo
+    bodyfile     : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag
+    parameters   :
+      nlevel     : 1
+      EJ         : 2
+      EJdamp     : 1.0
+      nEJkeep    : 1
+      nEJwant    : 100000
+      EJdryrun   : true
+    force        :
+      id         : sphereSL
+      parameters :
+        numr     : 2000
+        rmin     : 0.00001
+        rmax     : 2.0
+        Lmax     : 6
+        nmax     : 20
+        rmapping : 0.0667
+        self_consistent : true
+        modelname : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/Einasto_rs0.07_rhos24.913_alpha0.16_rtrunc20.txt
+        cachename : EinastoR20
+
+  - name         : mwdisc
+    bodyfile     : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag
+    parameters   :
+      nlevel     : 1
+      EJdryrun   : true
+      EJ         : 2
+      nEJkeep    : 1
+      nEJwant    : 100000
+      EJkinE     : false
+      EJext      : false
+      EJdiag     : false
+    force        :
+      id         : cylinder
+      parameters :
+        acyl       : 0.029
+        hcyl       : 0.004
+        lmaxfid    : 72
+        mmax       : 6
+        nmaxfid    : 32
+        nmax       : 20
+        ncylodd    : 8
+        ncylnx     : 512
+        ncylny     : 256
+        rcylmin    : 0.001
+        rcylmax    : 100.0
+        rnum       : 200
+        pnum       : 1
+        tnum       : 80
+        vflag      : 16
+        logr       : true
+        self_consistent : true
+        eof_file   : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/.MWeofhires
+
+  - name         : lmchalo
+    bodyfile     : transformedhalo_RunGrlmc.bods
+    parameters   :
+      nlevel     : 1
+      EJ         : 2
+      EJdamp     : 1.0
+      nEJkeep    : 1
+      nEJwant    : 100000
+      EJdryrun   : true
+    force        :
+      id         : sphereSL
+      parameters :
+        numr     : 2000
+        rmin     : 0.00001
+        rmax     : 2.0
+        Lmax     : 6
+        nmax     : 20
+        rmapping : 0.0667
+        self_consistent : true
+        modelname : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/Einasto_rs0.035_rhos24.682_alpha0.16_rtrunc33.txt
+        cachename : EinastoR33
+
+  - name         : lmcdisc
+    bodyfile     : transformeddisc_RunGrlmc.bods
+    parameters   :
+      nlevel     : 1
+      EJdryrun   : true
+      EJ         : 2
+      nEJkeep    : 1
+      nEJwant    : 10000
+      EJkinE     : false
+      EJext      : false
+      EJdiag     : false
+    force        :
+      id         : cylinder
+      parameters :
+        acyl       : 0.014
+        hcyl       : 0.003
+        lmaxfid    : 72
+        mmax       : 6
+        nmaxfid    : 32
+        nmax       : 20
+        ncylodd    : 8
+        ncylnx     : 512
+        ncylny     : 256
+        rcylmin    : 0.001
+        rcylmax    : 200.0
+        rnum       : 200
+        pnum       : 1
+        tnum       : 80
+        vflag      : 16
+        logr       : true
+        self_consistent : true
+        eof_file   : /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/.LMCeofhires
+
+Output:
+  - id : outlog
+    parameters : {nint : 1}
+  - id : outpsq
+    parameters : {nint : 100, real4 : false}
+  - id : outcoef
+    parameters : {filename : outcoef.mwhalo, name : mwhalo, nint : 1}
+  - id : outcoef
+    parameters : {filename : outcoef.mwdisk, name : mwdisc, nint : 1}
+
+External:
+
+Interaction:
