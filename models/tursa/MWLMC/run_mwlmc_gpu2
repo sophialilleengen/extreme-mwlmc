@@ -3,7 +3,7 @@
 #SBATCH --mail-user=michael.petersen@roe.ac.uk # set your mail address
 #SBATCH -p gpu                             # set partition (queue)
 #SBATCH --qos=standard
-#SBATCH --nodes=16                          # set node number
+#SBATCH --nodes=2                          # set node number
 #SBATCH --ntasks-per-node=4
 #SBATCH --gres=gpu:4                       # set GPU number per node
 #SBATCH --cpus-per-task=1
@@ -46,8 +46,7 @@ export CUDAARCHS=80
 
 # These will need to be changed to match the actual application you are running
 application="/home/dp309/dp309/dc-pete4/bin/exp"
-#options="run_mwlmc_model_gpu.yml"
-options="run_mwlmc_model_gpu_centre.yml"
+options="run_mwlmc_model_gpu4.yml"
 
 # stamp output with execution command
 echo ${application} ${options}
@@ -57,7 +56,7 @@ echo ${application} ${options}
 # MPI processes
 # 
 # Note use of gpu_launch.sh wrapper script for GPU and NIC pinning 
-srun --nodes=16 --ntasks-per-node=4 --cpus-per-task=1 \
+srun --nodes=2 --ntasks-per-node=4 --cpus-per-task=1 \
      --hint=nomultithread --distribution=block:block \
      gpu_launch.sh \
      ${application} ${options}
