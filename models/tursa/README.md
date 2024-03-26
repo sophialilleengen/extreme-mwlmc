@@ -8,7 +8,12 @@
 | 03-Dec-2023 | 7,343.7 GPUhs | 341 | 255M | 2600 | Primary solo LMC run, LMC000, on 32 GPUs (`multistep:3,dt:0.0016`) |
 | 14-Dec-2023 | 4,532.6 GPUhs | 2811 | 1825M | 1400 | Primary solo MW run, MW00000, on 64 GPUs in 47h (`multistep:3,dt:0.0016`)| 
 | 18-Dec-2023 | 3,348.7 GPUhs | 1184 | 1825M | 600 | Additional MW steps, on 32 GPUs (two separate 47h runs) |
+| 01-Jan-2024 | 6,000.0 GPUhs |      |       |     | reset at first of the year |
+| 18-Mar-2024 | 5,127.1 GPUhs | 873  | 2080M | 500 | Full-resolution MW-LMC test (`multistep:3,dt:0.0016`) |  
+| 25-Mar-2024 | 2,153.8 GPUhs | 2974 | 2080M | 1500 | Full-resolution MW-LMC production run (`multistep:4,dt:0.0016`)|
+| 25-Mar-2024 | 1,880.8 GPUhs | 273  | 2080M | 125 | Increased temporal resolution near peri for full-res MW-LMC |
 
+At full MWLMC resolution, we have 17 snapshots in the coarse-timestep run (`RunG5`), an additional 7 in the medium-timestep run (`RunG5t`).
 
 ## Moving the LMC to the starting location
 
@@ -20,11 +25,19 @@ This will be best accomplished using the `dev` queue to move off the head node b
 
 All particles are 6.e-10 in virial units.
 
-MWhalo: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag
+MWhalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag`
 
-MWdisc: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag
+MWdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag`
 
-LMChalo: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/halo.250M.bods.diag
+LMChalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/halo.250M.bods.diag`
 
-LMCdisc: /home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/disc.5M.bods.diag
+LMCdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/disc.5M.bods.diag`
 
+`scp "dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/outcoef*RunG5*" .`
+
+
+sleep 60m && scp transformedhalo_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/ && scp transformeddisc_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/
+
+### Getting the cuda compute capability
+
+EXP needs to be compiled with the correct compute capability. If `nvidia-smi` can be run, getting the capability is straightfoward: `nvidia-smi --query-gpu=compute_cap --format=csv`. On tursa, this returns
