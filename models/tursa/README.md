@@ -12,6 +12,9 @@
 | 18-Mar-2024 | 5,127.1 GPUhs | 873  | 2080M | 500 | Full-resolution MW-LMC test (`multistep:3,dt:0.0016`) |  
 | 25-Mar-2024 | 2,153.8 GPUhs | 2974 | 2080M | 1500 | Full-resolution MW-LMC production run (`multistep:4,dt:0.0016`)|
 | 25-Mar-2024 | 1,880.8 GPUhs | 273  | 2080M | 125 | Increased temporal resolution near peri for full-res MW-LMC |
+| 28-Mar-2024 | 1,815.1 GPUhs | 65   | 2080M | 33  | Extra increased temporal resolution near peri for full-res MW-LMC |
+| 30-Mar-2024 | project allocation consumed | 1815+ | 2080M | 1500 | Full-resolution MW-LMC with evolved MW | 
+
 
 At full MWLMC resolution, we have 17 snapshots in the coarse-timestep run (`RunG5`), an additional 7 in the medium-timestep run (`RunG5t`).
 
@@ -21,22 +24,29 @@ This will be best accomplished using the `dev` queue to move off the head node b
 
 `srun -N1 -n1 --qos=dev --partition=gpu-a100-80 --pty --time=1:0:0 $SHELL`
 
+_Actually_ in the end it is faster to do the translation on cuillin and bring back to tursa. To transfer files from cuillin after moving the bodies:
+`sleep 60m && scp transformedhalo_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/ && scp transformeddisc_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/`
+
 ## The body files
 
 All particles are 6.e-10 in virial units.
 
-MWhalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag`
+1. MWhalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/halo.1670M.bods.diag`
+2. MWdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag`
+3. LMChalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/halo.250M.bods.diag`
+4. LMCdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/disc.5M.bods.diag`
 
-MWdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/disc.155M.bods.diag`
-
-LMChalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/halo.250M.bods.diag`
-
-LMCdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/LMC/LMC00/disc.5M.bods.diag`
-
+To bring the data to a different machine:
 `scp "dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/outcoef*RunG5*" .`
 
+For an evolved model, we will try to align the later evolution of the solo MW with the infall of the LMC. The last time in the solo MW is T=3.52, so we are targeting T=3.52-1.7=1.82. This means translating an output file to ascii like so: `/home/dp309/dp309/dc-pete4/bin/psp2ascii -f SPL.runmw00000.00011 -a -v`. This makes the new input files 
 
-sleep 60m && scp transformedhalo_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/ && scp transformeddisc_RunGrlmc.bods dc-pete4@tursa.dirac.ed.ac.uk:/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MWLMC/
+1. MWhalo: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/comp.mwhalo`
+2. MWdisc: `/home/dp309/dp309/shared/extreme-mwlmc/models/tursa/MW/MW00000/comp.mwdisc`
+
+with the LMC input files unchanged.
+
+
 
 ### Getting the cuda compute capability
 
