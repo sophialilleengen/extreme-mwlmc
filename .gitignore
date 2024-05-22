@@ -11,6 +11,12 @@ models/cuillin/MW/MW0/*
 models/cuillin/LMC/LMC0/*
 models/cuillin/MWLMC/MWLMC0/*
 
+# plots and movies 
+*.png
+*.pdf
+*.avi
+*.mp4
+*/sophia_learn/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
