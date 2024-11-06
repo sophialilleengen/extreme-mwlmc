@@ -113,8 +113,8 @@ targetx = np.array([-0.61436097, -41.02036742, -26.83297465])
 targetv = np.array([-69.85587904, -221.68751413, 214.15271769])
 
 # Mike's
-targetx = np.array([ -0.425172   -41.01213084 -26.82899933])
-targetv = np.array([ -54.62928797  -208.98991061 198.85436269])
+targetx = np.array([ -0.425172,   -41.01213084, -26.82899933])
+targetv = np.array([ -54.62928797,  -208.98991061, 198.85436269])
 
 
 for runtag in ['RunA','RunD','RunH','RunI','RunJ','RunK','RunL','RunM','RunN','RunO','RunP','RunQ','RunR','RunS','RunT','RunU']:

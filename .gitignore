@@ -10,6 +10,7 @@ job*
 models/cuillin/MW/MW0/*
 models/cuillin/LMC/LMC0/*
 models/cuillin/MWLMC/MWLMC0/*
+analysis/LMCeofcachenew
 
 # plots and movies 
 *.png
@@ -17,6 +18,9 @@ models/cuillin/MWLMC/MWLMC0/*
 *.avi
 *.mp4
 */sophia_learn/*
+
+# other analyses 
+*/density_layers/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
